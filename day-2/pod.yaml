@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: girus
+  name: girus
+  namespace: sombra
+spec:
+  containers:
+  - image: nginx
+    name: girus
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "250m"
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+  volumes:
+  - name: cache-volume
+    emptyDir:
+      sizeLimit: 500Mi 
