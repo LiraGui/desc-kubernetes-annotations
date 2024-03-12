@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  labels:
+    storage: lento
+  name: my-pv
+spec: 
+  capacity:
+    storage: 1Gi
+  accessModes: # Modo de acesso ao disco.
+    - ReadWriteOnce # Tem acesso de leitura escrita somente em um nó.
+  persistentVolumeReclaimPolicy: Retain # Nào vai ser excluído quando o PVC for excluído.
+  hostPath: # Monta um diretório do File System
+    path: /mnt/data
+  storageClassName: storage-sombra
